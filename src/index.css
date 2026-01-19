@@ -1,0 +1,281 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "@fontsource/outfit/400.css";
+@import "@fontsource/outfit/500.css";
+@import "@fontsource/outfit/600.css";
+@import "@fontsource/outfit/700.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+
+@layer base {
+  :root {
+    /* Core palette - Travel vibes */
+    --background: 240 20% 4%;
+    --foreground: 210 40% 98%;
+
+    --card: 240 15% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 240 15% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Electric Turquoise Primary */
+    --primary: 191 100% 50%;
+    --primary-foreground: 240 20% 4%;
+
+    /* Cosmic Purple Secondary */
+    --secondary: 273 100% 50%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted cosmic tones */
+    --muted: 240 15% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Golden Accent */
+    --accent: 51 100% 50%;
+    --accent-foreground: 240 20% 4%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 240 15% 20%;
+    --input: 240 15% 15%;
+    --ring: 191 100% 50%;
+
+    --radius: 1rem;
+
+    /* Custom travel colors */
+    --turquoise: 191 100% 50%;
+    --turquoise-glow: 191 100% 60%;
+    --purple: 273 100% 50%;
+    --purple-glow: 273 100% 65%;
+    --gold: 51 100% 50%;
+    --gold-glow: 51 100% 60%;
+    --cosmic-dark: 240 20% 4%;
+    --cosmic-mid: 240 15% 12%;
+
+    /* Gradients */
+    --gradient-cosmic: linear-gradient(135deg, hsl(var(--turquoise)) 0%, hsl(var(--purple)) 100%);
+    --gradient-cosmic-radial: radial-gradient(circle at center, hsl(var(--turquoise)) 0%, hsl(var(--purple)) 100%);
+    --gradient-golden: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(40 100% 45%) 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+
+    /* Shadows */
+    --shadow-glow-turquoise: 0 0 40px hsl(var(--turquoise) / 0.4);
+    --shadow-glow-purple: 0 0 40px hsl(var(--purple) / 0.4);
+    --shadow-glow-gold: 0 0 30px hsl(var(--gold) / 0.3);
+    --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+    --sidebar-background: 240 15% 8%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 191 100% 50%;
+    --sidebar-primary-foreground: 240 20% 4%;
+    --sidebar-accent: 273 100% 50%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 240 15% 20%;
+    --sidebar-ring: 191 100% 50%;
+  }
+
+  .light {
+    --background: 210 40% 98%;
+    --foreground: 240 20% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 20% 10%;
+    --muted: 210 30% 92%;
+    --muted-foreground: 240 10% 40%;
+    --border: 210 20% 85%;
+    --input: 210 20% 90%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer components {
+  /* Glassmorphism card */
+  .glass-card {
+    @apply relative overflow-hidden rounded-2xl border border-white/10;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.02) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .glass-card-strong {
+    @apply glass-card;
+    background: linear-gradient(135deg, rgba(139,0,255,0.15) 0%, rgba(0,212,255,0.1) 100%);
+  }
+
+  /* Cosmic gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, hsl(var(--turquoise)) 0%, hsl(var(--purple)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-gold {
+    background: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(40 100% 55%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Cosmic button */
+  .btn-cosmic {
+    @apply relative overflow-hidden rounded-xl px-6 py-3 font-semibold text-white transition-all duration-300;
+    background: linear-gradient(135deg, hsl(var(--turquoise)) 0%, hsl(var(--purple)) 100%);
+    box-shadow: 0 4px 20px hsl(var(--turquoise) / 0.3);
+  }
+
+  .btn-cosmic:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px hsl(var(--turquoise) / 0.4);
+  }
+
+  .btn-golden {
+    @apply relative overflow-hidden rounded-xl px-6 py-3 font-semibold transition-all duration-300;
+    background: linear-gradient(135deg, hsl(var(--gold)) 0%, hsl(40 100% 45%) 100%);
+    color: hsl(var(--cosmic-dark));
+    box-shadow: 0 4px 20px hsl(var(--gold) / 0.3);
+  }
+
+  .btn-golden:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px hsl(var(--gold) / 0.4);
+  }
+
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  @keyframes rotate-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes particle-float {
+    0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.6; }
+    25% { transform: translateY(-30px) translateX(10px) scale(1.1); opacity: 0.8; }
+    50% { transform: translateY(-20px) translateX(-10px) scale(0.9); opacity: 0.7; }
+    75% { transform: translateY(-40px) translateX(5px) scale(1.05); opacity: 0.5; }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-slow {
+    animation: float-slow 8s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s infinite;
+  }
+
+  .animate-rotate-slow {
+    animation: rotate-slow 30s linear infinite;
+  }
+
+  .animate-particle {
+    animation: particle-float 10s ease-in-out infinite;
+  }
+
+  /* Stat card */
+  .stat-card {
+    @apply glass-card p-6 text-center transition-all duration-300;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px hsl(var(--purple) / 0.3);
+  }
+
+  /* Timeline */
+  .timeline-line {
+    @apply absolute left-8 top-0 h-full w-0.5;
+    background: linear-gradient(180deg, hsl(var(--turquoise)) 0%, hsl(var(--purple)) 100%);
+  }
+
+  .timeline-dot {
+    @apply absolute left-6 w-5 h-5 rounded-full border-2 border-white/20;
+    background: linear-gradient(135deg, hsl(var(--turquoise)) 0%, hsl(var(--purple)) 100%);
+    box-shadow: 0 0 20px hsl(var(--turquoise) / 0.5);
+  }
+
+  /* Weather card */
+  .weather-badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm font-medium;
+    background: linear-gradient(135deg, rgba(255,215,0,0.2) 0%, rgba(255,165,0,0.1) 100%);
+    border: 1px solid hsl(var(--gold) / 0.3);
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--cosmic-dark));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, hsl(var(--turquoise)) 0%, hsl(var(--purple)) 100%);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, hsl(var(--turquoise-glow)) 0%, hsl(var(--purple-glow)) 100%);
+  }
+}
+
+@layer utilities {
+  .text-glow-turquoise {
+    text-shadow: 0 0 20px hsl(var(--turquoise) / 0.5);
+  }
+
+  .text-glow-gold {
+    text-shadow: 0 0 20px hsl(var(--gold) / 0.5);
+  }
+
+  .bg-cosmic-gradient {
+    background: radial-gradient(ellipse at top, hsl(var(--turquoise) / 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom right, hsl(var(--purple) / 0.15) 0%, transparent 50%),
+                hsl(var(--cosmic-dark));
+  }
+}
